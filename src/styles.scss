@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use './assets/styles/font.scss' as *;
+@use './assets/styles/var.scss' as *;
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  padding: $global-padding;
+}
+
