@@ -1,10 +1,11 @@
 @use 'var' as *;
 
 .page-not-found {
-  min-height: 100vh;
+  height: calc(100vh - 40px);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   &__container {
     max-width: 600px;
@@ -45,59 +46,12 @@
     display: flex;
     gap: 1rem;
   }
-
-  &__button {
-    font-family: "Manrope", sans-serif;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    min-width: 140px;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-
-    &--primary {
-      background-color: #27AE60;
-      color: $color-white;
-      
-      &:hover {
-        background-color: #2ECC71;
-        box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
-      }
-  
-    }
-
-    &--secondary {
-      background-color: rgba(255, 255, 255, 0.8);
-      color: $color-black-primary;
-      border: 1px solid rgba(153, 153, 153, 0.3);
-      
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-color: rgba(153, 153, 153, 0.5);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-      
-    }
-  }
 }
 
 @media (max-width: 768px) {
   .page-not-found {
     &__actions {
-      flex-direction: column;
       gap: 0.75rem;
-    }
-    
-    &__button {
-      width: 100%;
-      min-width: auto;
     }
   }
 }

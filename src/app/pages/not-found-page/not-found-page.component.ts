@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-page-not-found',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './not-found-page.component.html',
   styleUrl: './not-found-page.component.scss'
 })
