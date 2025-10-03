@@ -1,0 +1,82 @@
+.p-button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  padding: 10px 16px;
+
+  &--primary {
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+
+    &:hover:not(:disabled) {
+      background-color: #333333;
+    }
+
+    &:active:not(:disabled) {
+      background-color: #000000;
+    }
+  }
+
+  &--secondary {
+    background-color: #F2F2F2;
+    color: #1F1F1F;
+    font-weight: 400;
+
+    &:hover:not(:disabled) {
+      background-color: #E5E5E5;
+    }
+
+    &:active:not(:disabled) {
+      background-color: #D9D9D9;
+    }
+  }
+
+  &--small {
+    padding: 8px 12px;
+    min-height: 32px;
+  }
+
+  &--medium {
+    padding: 10px 16px;
+    min-height: 40px;
+  }
+
+  &--large {
+    padding: 12px 20px;
+    min-height: 48px;
+  }
+
+  &--fullscreen {
+    padding: 10px 16px;
+    width: 100%;
+    min-height: 48px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &.p-button--primary {
+      background-color: #1F1F1F;
+    }
+
+    &.p-button--secondary {
+      background-color: #F2F2F2;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+}

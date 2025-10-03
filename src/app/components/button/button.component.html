@@ -1,0 +1,14 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [class.p-button]="true"
+  [class.p-button--primary]="severity === 'primary'"
+  [class.p-button--secondary]="severity === 'secondary'"
+  [class.p-button--small]="size === 'small'"
+  [class.p-button--medium]="size === 'medium'"
+  [class.p-button--large]="size === 'large'"
+  [class.p-button--fullscreen]="size === 'fullscreen'"
+  (click)="onClick.emit($event)"
+>
+  <ng-content></ng-content>
+</button>
