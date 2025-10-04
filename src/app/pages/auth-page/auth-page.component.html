@@ -10,35 +10,47 @@
       <p class="auth-page__subtitle">Начните сегодня</p>
     </div>
 
-    <form class="auth-page__form">
+    <form class="auth-page__form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
       <div class="auth-page__field">
         <input
           type="text"
           id="email-phone"
-          name="email-phone"
+          formControlName="emailPhone"
           class="auth-page__input"
           placeholder="Номер телефона / Адрес эл. почты"
+          [ngClass]="{'error': authForm.get('emailPhone')?.invalid && authForm.get('emailPhone')?.touched}"
         >
+        <div
+          *ngIf="authForm.get('emailPhone')?.invalid && authForm.get('emailPhone')?.touched"
+          class="auth-page__error">
+          {{ getFieldError(authForm.get('emailPhone')) }}
+        </div>
       </div>
 
       <div class="auth-page__field">
         <input
           type="password"
           id="password"
-          name="password"
+          formControlName="password"
           class="auth-page__input"
           placeholder="Введите пароль"
+          [ngClass]="{'error': authForm.get('password')?.invalid && authForm.get('password')?.touched}"
         >
+        <div
+          *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+          class="auth-page__error">
+          {{ getFieldError(authForm.get('password')) }}
+        </div>
       </div>
-    </form>
 
-    <p-button
-      severity="primary"
-      size="fullscreen"
-      type="submit"
-      class="auth-page__submit">
-      Зарегистрироваться
-    </p-button>
+      <p-button
+        severity="primary"
+        size="fullscreen"
+        class="auth-page__submit"
+        [disabled]="authForm.invalid">
+        Зарегистрироваться
+      </p-button>
+    </form>
 
     <div class="auth-page__separator">
       <span class="auth-page__separator-text">ИЛИ</span>

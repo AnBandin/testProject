@@ -59,6 +59,15 @@
     margin-bottom: 20px;
   }
 
+  &__error {
+    color: #e74c3c;
+    font-family: "Manrope", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 8px;
+    text-align: left;
+  }
+
   &__input {
     width: 100%;
     padding: 16px 0;
@@ -78,6 +87,14 @@
 
     &:focus {
       border-bottom-color: $color-black-secondary;
+    }
+
+    &.error {
+      border-bottom-color: #e74c3c;
+      
+      &:focus {
+        border-bottom-color: #e74c3c;
+      }
     }
   }
 
