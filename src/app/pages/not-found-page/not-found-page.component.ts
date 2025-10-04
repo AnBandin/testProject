@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ButtonComponent } from '../../components/button/button.component';
+import {ButtonComponent} from "@ux/button/button.component";
 
 @Component({
   selector: 'app-page-not-found',
