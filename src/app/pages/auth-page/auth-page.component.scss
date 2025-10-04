@@ -1,220 +1,23 @@
-@use 'var' as *;
-
 .auth-page {
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: $color-white;
-  position: relative;
+  justify-content: space-between;
 
 
-  &__container {
-    max-width: 391px;
-    width: 100%;
-    text-align: center;
+  &__left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
   }
 
-  &__header {
-    margin-bottom: 2rem;
+  &__right {
+    width: 705px;
+    height: calc(100vh - 40px);
   }
 
-  &__logo {
-    margin-bottom: 45px;
-  }
-
-  &__logo-icon {
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 0 auto;
-  }
-
-  &__title {
-    font-family: "Manrope", sans-serif;
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.03em;
-    color: $color-black-secondary;
-    margin-block-end: 0;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  &__subtitle {
-    font-family: "Manrope", sans-serif;
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.03em;
-    text-align: center;
-    color: $color-black-secondary;
-    opacity: 0.3;
-    margin: 0;
-  }
-
-
-  &__field {
-    margin-bottom: 20px;
-  }
-
-  &__error {
-    color: #e74c3c;
-    font-family: "Manrope", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 8px;
-    text-align: left;
-  }
-
-  &__input {
-    width: 100%;
-    padding: 16px 0;
-    border: none;
-    border-bottom: 1px solid $color-border;
-    background: transparent;
-    font-family: "Manrope", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: $color-black-secondary;
-    outline: none;
-    transition: border-color 0.3s ease;
-
-    &::placeholder {
-      color: $color-grey;
-    }
-
-    &:focus {
-      border-bottom-color: $color-black-secondary;
-    }
-
-    &.error {
-      border-bottom-color: #e74c3c;
-      
-      &:focus {
-        border-bottom-color: #e74c3c;
-      }
-    }
-  }
-
-  &__submit {
-    margin-top: 1rem;
-  }
-
-  &__separator {
-    position: relative;
-    margin: 2rem 0 20px 0;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background-color: $color-border;
-    }
-  }
-
-  &__separator-text {
-    background-color: $color-white;
-    color: $color-grey-medium;
-    padding: 0 20px;
-    font-family: "Manrope", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 100%;
-    position: relative;
-  }
-
-  &__footer {
-    margin-top: 1rem;
-  }
-
-  &__login-text {
-    font-family: "Manrope", sans-serif;
-    font-size: 0.9rem;
-    color: $color-grey-dark;
-    margin: 0;
-  }
-
-  &__login-link {
-    color: $color-link;
-    text-decoration: none;
-    font-weight: 600;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .auth-page {
-    align-items: flex-start;
-    min-height: calc(100vh - 40px);
-
-    &__container {
-      max-width: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      height: calc(100vh - 40px);
-    }
-
-    &__header {
-      margin-bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    &__logo {
-      margin-bottom: 0;
-      align-self: flex-start;
-    }
-
-    &__logo-icon {
-      margin: 0;
-    }
-
-    &__title {
-      font-size: 28px;
-      line-height: 38px;
-      text-align: left;
-    }
-
-    &__subtitle {
-      font-size: 28px;
-      line-height: 38px;
-      text-align: left;
-      margin-bottom: 0;
-    }
-
-    &__form {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 47px;
-    }
-
-    &__field {
-      margin-bottom: 20px;
-    }
-
-    &__submit {
-      margin-top: auto;
-      margin-bottom: 20px;
-    }
-
-    &__separator {
+  @media (max-width: 1180px) {
+    &__right {
       display: none;
-    }
-
-    &__footer {
-      margin-top: 0;
     }
   }
 }
