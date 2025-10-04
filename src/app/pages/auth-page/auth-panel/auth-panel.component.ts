@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, inject, DestroyRef} from '@angular/core';
+import {Component, OnInit, inject, DestroyRef, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,19 +9,19 @@ import {
 import {ButtonComponent} from "@ux/button/button.component";
 import {emailOrPhoneValidator, getFieldError} from '@utils';
 import {CommonModule} from "@angular/common";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {filter} from "rxjs";
 
 @Component({
-  selector: 'app-auth-page',
+  selector: 'auth-panel',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
-  templateUrl: './auth-page.component.html',
-  styleUrl: './auth-page.component.scss'
+  templateUrl: './auth-panel.component.html',
+  styleUrl: './auth-panel.component.scss'
 })
-export class AuthPageComponent implements OnInit {
+export class AuthPanelComponent implements OnInit {
 
   authForm: FormGroup;
   errorMessage: string = '';
@@ -29,13 +29,11 @@ export class AuthPageComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
+  private cdr = inject(ChangeDetectorRef);
 
   protected readonly getFieldError = getFieldError;
 
-
-
   constructor(private fb: FormBuilder, ) {}
-
 
   ngOnInit(): void {
     this.authForm = this.fb.group({
@@ -62,9 +60,9 @@ export class AuthPageComponent implements OnInit {
         },
         error: () => {
           this.errorMessage = 'Ошибка при регистрации';
+          this.cdr.markForCheck();
         }
       });
     }
   }
-
 }

@@ -23,6 +23,7 @@
     "paths": {
       "@utils": ["app/utils"],
       "@ux/*": ["app/components/ux/*"],
+      "@assets/*": ["app/assets/*"],
     },
     "lib": [
       "ES2022",

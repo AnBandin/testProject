@@ -1,6 +1,6 @@
 @use 'var' as *;
 
-.auth-page {
+.auth-panel {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -64,11 +64,11 @@
     font-family: "Manrope", sans-serif;
     font-size: 12px;
     font-weight: 500;
-    margin-top: 8px;
+    margin-top: 3px;
     text-align: left;
 
     &-submit {
-      @extend .auth-page__error;
+      @extend .auth-panel__error;
       position: absolute;
     }
   }
@@ -156,7 +156,7 @@
 }
 
 @media (max-width: 768px) {
-  .auth-page {
+  .auth-panel {
     align-items: flex-start;
     min-height: calc(100vh - 40px);
 
@@ -202,7 +202,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-bottom: 47px;
+      margin-bottom: 28px;
     }
 
     &__field {

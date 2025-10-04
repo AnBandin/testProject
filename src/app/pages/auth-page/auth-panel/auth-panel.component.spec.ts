@@ -2,23 +2,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthPageComponent } from './auth-page.component';
+import { AuthPanelComponent } from './auth-panel.component';
 
 describe('AuthPageComponent', () => {
-  let component: AuthPageComponent;
-  let fixture: ComponentFixture<AuthPageComponent>;
+  let component: AuthPanelComponent;
+  let fixture: ComponentFixture<AuthPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        AuthPageComponent,
+        AuthPanelComponent,
         ReactiveFormsModule,
         BrowserAnimationsModule
       ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AuthPageComponent);
+    fixture = TestBed.createComponent(AuthPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
