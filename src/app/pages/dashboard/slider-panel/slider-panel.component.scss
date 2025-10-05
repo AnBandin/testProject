@@ -1,0 +1,36 @@
+.slider-panel {
+  position: relative;
+  background-color: #ffffff;
+  height: 60px;
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.slider-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
+}
+
+.slider-buttons {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.general-button,
+.table-button {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.general-button {
+  color: #999999;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+}
