@@ -1,0 +1,121 @@
+.header-panel {
+  position: relative;
+  background-color: #ffffff;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 24px;
+  flex: 1;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.crm-button,
+.api-button,
+.knowledge-button {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: left;
+  border: none;
+}
+
+.crm-button {
+  background-color: #F0F0F0;
+  color: #333333;
+  border-radius: 6px;
+}
+
+.api-button,
+.knowledge-button {
+  color: #999999;
+  background: transparent;
+  padding: 8px 0;
+}
+
+.knowledge-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.knowledge-text {
+  color: #1F1F1F;
+  margin-bottom: 3px;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: left;
+}
+
+.knowledge-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 3px;
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #D3F200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #1F1F1F;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  color: #1F1F1F;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.user-role {
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+@media (max-width: 485px) {
+  .knowledge-button {
+    display: none;
+  }
+}

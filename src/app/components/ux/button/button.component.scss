@@ -41,14 +41,30 @@
     }
   }
 
+  &--text {
+    background-color: transparent;
+    color: #666666;
+    font-weight: 400;
+    padding: 8px 0;
+
+    &:hover:not(:disabled) {
+      color: #333333;
+      background-color: transparent;
+    }
+
+    &:active:not(:disabled) {
+      color: #000000;
+      background-color: transparent;
+    }
+  }
+
   &--small {
     padding: 8px 12px;
     min-height: 32px;
   }
 
   &--medium {
-    padding: 10px 16px;
-    min-height: 40px;
+    padding: 10px 10px;
   }
 
   &--large {
@@ -72,6 +88,11 @@
 
     &.p-button--secondary {
       background-color: #F2F2F2;
+    }
+
+    &.p-button--text {
+      background-color: transparent;
+      color: #999999;
     }
   }
 

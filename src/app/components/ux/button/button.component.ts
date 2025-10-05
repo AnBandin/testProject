@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-export type ButtonSeverity = 'primary' | 'secondary';
+export type ButtonSeverity = 'primary' | 'secondary' | 'text';
 export type ButtonSize = 'small' | 'medium' | 'large' | 'fullscreen';
 
 @Component({
