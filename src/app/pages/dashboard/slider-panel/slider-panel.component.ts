@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ButtonComponent} from "@ux/button/button.component";
 
 @Component({
   selector: 'slider-panel',
   standalone: true,
   imports: [ButtonComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './slider-panel.component.html',
   styleUrl: './slider-panel.component.scss'
 })

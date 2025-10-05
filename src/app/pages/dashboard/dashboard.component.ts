@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {HeaderPanelComponent} from "./header-panel/header-panel.component";
 import {SliderPanelComponent} from "./slider-panel/slider-panel.component";
 import {TableHeaderPanelComponent} from "./table-header-panel/table-header-panel.component";
@@ -13,6 +13,7 @@ import {TableContentPanelComponent} from "./table-content-panel/table-content-pa
     TableHeaderPanelComponent,
     TableContentPanelComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

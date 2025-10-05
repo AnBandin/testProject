@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 export type ButtonSeverity = 'primary' | 'secondary' | 'text';
 export type ButtonSize = 'small' | 'medium' | 'large' | 'fullscreen';
@@ -7,6 +7,7 @@ export type ButtonSize = 'small' | 'medium' | 'large' | 'fullscreen';
   selector: 'p-button',
   standalone: true,
   imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
