@@ -4,7 +4,38 @@
   background-color: #F3F3F1;
   border-radius: 20px;
   position: relative;
+}
+
+.loyalty-content {
   padding: 35px;
+  height: calc(100vh - 40px);
+}
+
+.loyalty-heading {
+  position: absolute;
+  top: 25px;
+}
+
+.loyalty-title {
+  margin: 0;
+  font-family: Manrope;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 41px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #1A1A1A;
+}
+
+.loyalty-subtitle {
+  margin: 0;
+  font-family: Manrope;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #1A1A1A;
 }
 
 .advertisement-overlay {
@@ -12,3 +43,39 @@
   top: 97px;
   left: 0;
 }
+
+.loyalty-description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  bottom: 35px;
+
+  p {
+    margin: 0;
+  }
+
+  .loyalty-item {
+    display: flex;
+    align-items: center;
+    gap: 6.25px;
+  }
+}
+
+.loyalty-buttons {
+  display: flex;
+  position: absolute;
+  gap: 9px;
+  bottom: 35px;
+  right: 35px;
+  align-items: center;
+
+  &-right {
+    display: inline-block;
+    border-radius: 10px;
+    width: 48px;
+    height: 46px;
+  }
+}
+
+

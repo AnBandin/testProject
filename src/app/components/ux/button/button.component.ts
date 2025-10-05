@@ -15,5 +15,8 @@ export class ButtonComponent {
   @Input() size: ButtonSize = 'medium';
   @Input() disabled: boolean = false;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
+  @Input() width?: string;
+  @Input() height?: string;
+  @Input() borderRadius?: string;
   @Output() onClick = new EventEmitter<Event>();
 }

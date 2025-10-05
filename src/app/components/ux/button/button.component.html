@@ -8,6 +8,9 @@
   [class.p-button--medium]="size === 'medium'"
   [class.p-button--large]="size === 'large'"
   [class.p-button--fullscreen]="size === 'fullscreen'"
+  [style.width]="width"
+  [style.height]="height"
+  [style.border-radius]="borderRadius"
   (click)="onClick.emit($event)"
 >
   <ng-content></ng-content>

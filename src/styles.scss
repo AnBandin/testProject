@@ -13,3 +13,134 @@ body {
   box-sizing: border-box;
 }
 
+.btn {
+  display: inline-block;
+  padding: .375rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  outline: none!important
+}
+
+.btn:focus,.btn:hover {
+  text-decoration: none
+}
+
+.btn.focus {
+  text-decoration: none
+}
+
+.btn.active,.btn:active {
+  background-image: none;
+  outline: 0
+}
+
+.btn.disabled,.btn:disabled {
+  cursor: not-allowed
+}
+
+a.btn.disabled,fieldset[disabled] a.btn {
+  pointer-events: none
+}
+
+.btn-primary {
+  color: #fff!important;
+  background-color: #1f1f1f!important;
+  border: none!important
+}
+
+.btn-primary:disabled {
+  color: #909090!important;
+  background-color: #f5f5f5!important;
+  border: none!important
+}
+
+.btn-primary:disabled>img {
+  filter: invert(60%) sepia(13%) saturate(0%) hue-rotate(283deg) brightness(92%) contrast(89%)
+}
+
+.btn-primary:hover {
+  color: #fff!important;
+  background: #515151!important;
+  border: none!important
+}
+
+.btn-primary.focus,.btn-primary:focus {
+  color: #fff!important;
+  background: #1F1F1F!important;
+  border: none!important
+}
+
+.btn-primary.active,.btn-primary:active,.open>.btn-primary.dropdown-toggle {
+  color: #0d0d0d!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important;
+  border: none!important
+}
+
+.btn-primary.active,.btn-primary:active,.open>.btn-primary.dropdown-toggle>img {
+  filter: none
+}
+
+.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.btn-primary.dropdown-toggle.focus,.open>.btn-primary.dropdown-toggle:focus,.open>.btn-primary.dropdown-toggle:hover {
+  color: #0d0d0d!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important;
+  border: none!important
+}
+
+.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.btn-primary.dropdown-toggle.focus,.open>.btn-primary.dropdown-toggle:focus,.open>.btn-primary.dropdown-toggle:hover>img {
+  filter: none
+}
+
+.btn-primary.disabled.focus,.btn-primary.disabled:focus,.btn-primary:disabled.focus,.btn-primary:disabled:focus {
+  color: #909090!important;
+  background-color: #f5f5f5!important;
+  border: none!important
+}
+
+.btn-primary.disabled:hover,.btn-primary:disabled:hover {
+  color: #909090!important;
+  background-color: #f5f5f5!important;
+  border: none!important
+}
+
+.btn-secondary {
+  color: #1f1f1f!important;
+  border: none!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+.btn-secondary:hover {
+  color: #1f1f1f!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+.btn-secondary.focus,.btn-secondary:focus {
+  color: #1f1f1f!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+.btn-secondary.active,.btn-secondary:active,.open>.btn-secondary.dropdown-toggle {
+  color: #1f1f1f!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+.btn-secondary.active.focus,.btn-secondary.active:focus,.btn-secondary.active:hover,.btn-secondary:active.focus,.btn-secondary:active:focus,.btn-secondary:active:hover,.open>.btn-secondary.dropdown-toggle.focus,.open>.btn-secondary.dropdown-toggle:focus,.open>.btn-secondary.dropdown-toggle:hover {
+  color: #1f1f1f!important;
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+btn.btn-secondary.disabled.focus,.btn.btn-secondary.disabled:focus,.btn.btn-secondary:disabled.focus,.btn.btn-secondary:disabled:focus {
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
+
+.btn.btn-secondary.disabled:hover,.btn.btn-secondary:disabled:hover {
+  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+}
