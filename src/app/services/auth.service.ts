@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, catchError, finalize, Observable, tap} from 'rxjs';
+import {catchError, Observable, tap} from 'rxjs';
 
 interface AuthResponse {
   auth_token: string;
@@ -11,7 +11,7 @@ interface AuthResponse {
 })
 export class AuthService {
   private readonly API_URL = 'https://api.teyca.ru/test-auth-only';
-  private tokenSubject = new BehaviorSubject<string | null>(null);
+  private token: string;
 
   constructor(private http: HttpClient) {}
 
@@ -30,10 +30,10 @@ export class AuthService {
   }
 
   getCurrentToken(): string | null {
-    return this.tokenSubject.value;
+    return this.token;
   }
 
   private setToken(token: string): void {
-    this.tokenSubject.next(token);
+    this.token = token;
   }
 }

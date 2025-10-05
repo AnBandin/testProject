@@ -4,6 +4,10 @@
   min-height: 60px;
   display: flex;
   flex-direction: column;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .header-content {
@@ -29,7 +33,6 @@
 .crm-button,
 .api-button,
 .knowledge-button {
-  font-family: Manrope;
   font-size: 14px;
   font-weight: 700;
   line-height: 100%;
@@ -58,7 +61,6 @@
 .knowledge-text {
   color: #1F1F1F;
   margin-bottom: 3px;
-  font-family: Manrope;
   font-size: 14px;
   font-weight: 600;
   line-height: 19px;
@@ -94,7 +96,6 @@
 .user-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
 .user-name {
