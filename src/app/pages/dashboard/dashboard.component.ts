@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HeaderPanelComponent} from "./header-panel/header-panel.component";
 import {SliderPanelComponent} from "./slider-panel/slider-panel.component";
 import {TableHeaderPanelComponent} from "./table-header-panel/table-header-panel.component";
+import {TableContentPanelComponent} from "./table-content-panel/table-content-panel.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,8 @@ import {TableHeaderPanelComponent} from "./table-header-panel/table-header-panel
   imports: [
     HeaderPanelComponent,
     SliderPanelComponent,
-    TableHeaderPanelComponent
+    TableHeaderPanelComponent,
+    TableContentPanelComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
