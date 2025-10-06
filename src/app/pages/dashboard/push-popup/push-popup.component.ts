@@ -4,17 +4,14 @@ import {
   WritableSignal,
   ChangeDetectionStrategy,
   Input,
-  Output,
-  EventEmitter,
-  inject,
-  OnDestroy
+  inject, DestroyRef
 } from '@angular/core';
 import { ButtonComponent } from '@ux/button/button.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PushData } from '../../../models/client.model';
 import {ClientService} from "../../../services/client.service";
-import { Subscription } from 'rxjs';
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'push-popup',
@@ -24,10 +21,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './push-popup.component.html',
   styleUrl: './push-popup.component.scss'
 })
-export class PushPopupComponent implements OnDestroy {
+export class PushPopupComponent {
 
   private clientService = inject(ClientService);
-  private subscription: Subscription = new Subscription();
+  private destroyRef = inject(DestroyRef);
+
 
   @Input() selectedItems: number[] = [];
 
@@ -52,16 +50,9 @@ export class PushPopupComponent implements OnDestroy {
       push_message: this.messageText
     };
 
-    this.subscription.add(
-      this.clientService.sendPush(pushData).subscribe({
-        next: (response) => {
-          console.log('Push отправлен успешно:', response);
-        },
-        error: (error) => {
-          console.error('Ошибка отправки push:', error);
-        }
-      })
-    );
+    this.clientService.sendPush(pushData)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe();
 
     this.closeModal();
   }
@@ -86,9 +77,5 @@ export class PushPopupComponent implements OnDestroy {
 
   cancelSend() {
     this.closeModal();
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

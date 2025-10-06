@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ClientService} from "../../../services/client.service";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
@@ -18,6 +18,7 @@ import {debounceTime, distinctUntilChanged, Subject} from "rxjs";
 import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {PushPopupComponent} from "../push-popup/push-popup.component";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'table-content-panel',
@@ -44,6 +45,7 @@ import {PushPopupComponent} from "../push-popup/push-popup.component";
 })
 export class TableContentPanelComponent implements OnInit, AfterViewInit {
   private clientService = inject(ClientService);
+  private destroyRef = inject(DestroyRef);
   private searchSubject = new Subject<string>();
 
   dataSource = new MatTableDataSource<User>([]);
@@ -98,7 +100,8 @@ export class TableContentPanelComponent implements OnInit, AfterViewInit {
   private setupSearch() {
     this.searchSubject.pipe(
       debounceTime(300),
-      distinctUntilChanged()
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
     ).subscribe(searchTerm => {
       this.pageIndex = 0;
       this.loadPage(this.pageIndex, this.pageSize, searchTerm);
@@ -107,7 +110,9 @@ export class TableContentPanelComponent implements OnInit, AfterViewInit {
 
   private loadPage(pageIndex: number, pageSize: number, search?: string) {
     const offset = pageIndex * pageSize;
-    this.clientService.getClient(pageSize, offset, search).subscribe(resp => {
+    this.clientService.getClient(pageSize, offset, search)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(resp => {
       this.dataSource.data = resp.passes;
       this.length = resp.meta.size;
       this.selectedItems = [];
