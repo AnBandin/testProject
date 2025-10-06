@@ -1,7 +1,20 @@
-import {Component, signal, WritableSignal, ChangeDetectionStrategy} from '@angular/core';
+import {
+  Component,
+  signal,
+  WritableSignal,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  inject,
+  OnDestroy
+} from '@angular/core';
 import { ButtonComponent } from '@ux/button/button.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PushData } from '../../../models/client.model';
+import {ClientService} from "../../../services/client.service";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'push-popup',
@@ -11,17 +24,19 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './push-popup.component.html',
   styleUrl: './push-popup.component.scss'
 })
-export class PushPopupComponent {
-  // Signals для управления состоянием модального окна
+export class PushPopupComponent implements OnDestroy {
+
+  private clientService = inject(ClientService);
+  private subscription: Subscription = new Subscription();
+
+  @Input() selectedItems: number[] = [];
+
   isModalOpen: WritableSignal<boolean> = signal(false);
 
-  // Обычные свойства для формы
   messageText: string = '';
   sendDate: string = 'Сейчас';
   senderName: string = 'Имя отправителя';
 
-
-  // Методы для управления модальным окном
   openModal() {
     this.isModalOpen.set(true);
   }
@@ -30,20 +45,50 @@ export class PushPopupComponent {
     this.isModalOpen.set(false);
   }
 
-  // Отправка Push уведомления
   sendPush() {
-    console.log('Отправка Push:', {
-      message: this.messageText,
-      sendDate: this.sendDate,
-      senderName: this.senderName
-    });
+    const pushData: PushData = {
+      user_id: this.selectedItems.join(','),
+      date_start: this.getDateStart(),
+      push_message: this.messageText
+    };
 
-    // Здесь будет логика отправки
+    this.subscription.add(
+      this.clientService.sendPush(pushData).subscribe({
+        next: (response) => {
+          console.log('Push отправлен успешно:', response);
+        },
+        error: (error) => {
+          console.error('Ошибка отправки push:', error);
+        }
+      })
+    );
+
     this.closeModal();
   }
 
-  // Отмена отправки
+  private getDateStart(): string {
+    const now = new Date();
+
+    switch (this.sendDate) {
+      case 'Завтра':
+        now.setDate(now.getDate() + 1);
+        break;
+      case 'Через неделю':
+        now.setDate(now.getDate() + 7);
+        break;
+      default:
+        now.setSeconds(now.getSeconds() + 5);
+        break;
+    }
+
+    return now.toISOString();
+  }
+
   cancelSend() {
     this.closeModal();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

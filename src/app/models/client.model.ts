@@ -72,3 +72,9 @@ export interface User {
   telegram: boolean
   confirm_code: any
 }
+
+export interface PushData {
+  user_id: string;
+  date_start: string;
+  push_message: string;
+}

@@ -52,7 +52,7 @@ export class TableContentPanelComponent implements OnInit, AfterViewInit {
   pageIndex = 0;
   searchQuery: string = '';
 
-  selectedItems = new Set<number>();
+  selectedItems: number[] = [];
   isAllSelected = false;
   isIndeterminate = false;
 
@@ -110,38 +110,37 @@ export class TableContentPanelComponent implements OnInit, AfterViewInit {
     this.clientService.getClient(pageSize, offset, search).subscribe(resp => {
       this.dataSource.data = resp.passes;
       this.length = resp.meta.size;
-      this.selectedItems.clear();
+      this.selectedItems = [];
       this.updateSelectionState();
     });
   }
 
   toggleSelectAll() {
     if (this.isAllSelected) {
-      this.selectedItems.clear();
+      this.selectedItems = [];
     } else {
-      this.dataSource.data.forEach(item => {
-        this.selectedItems.add(item.user_id);
-      });
+      this.selectedItems = this.dataSource.data.map(item => item.user_id);
     }
     this.updateSelectionState();
   }
 
   toggleItemSelection(userId: number) {
-    if (this.selectedItems.has(userId)) {
-      this.selectedItems.delete(userId);
+    const index = this.selectedItems.indexOf(userId);
+    if (index > -1) {
+      this.selectedItems.splice(index, 1);
     } else {
-      this.selectedItems.add(userId);
+      this.selectedItems.push(userId);
     }
     this.updateSelectionState();
   }
 
   isItemSelected(userId: number): boolean {
-    return this.selectedItems.has(userId);
+    return this.selectedItems.includes(userId);
   }
 
   private updateSelectionState() {
     const totalItems = this.dataSource.data.length;
-    const selectedCount = this.selectedItems.size;
+    const selectedCount = this.selectedItems.length;
 
     this.isAllSelected = selectedCount === totalItems && totalItems > 0;
     this.isIndeterminate = selectedCount > 0 && selectedCount < totalItems;
