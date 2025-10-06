@@ -1,0 +1,127 @@
+<div class="table-search">
+  <div class="table-search__input-container">
+    <input
+      type="text"
+      id="table-search-input"
+      class="table-search__input"
+      placeholder="Поиск"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange()"
+    >
+  </div>
+
+  <p-button
+    class="table-search__button"
+    severity="secondary"
+    width="172px"
+    height="46px"
+    borderRadius="5px"
+
+  >
+    <div class="table-search__button-container">
+      <span class="table-search__button-text">Отправить Push</span>
+      <img src="assets/icons/stroke.svg" alt="Send" class="table-search__button-icon">
+    </div>
+  </p-button>
+</div>
+
+
+<div class="mat-elevation-z8">
+  <div class="table-scroll">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container *ngFor="let item of columnLabels | keyvalue" [matColumnDef]="item.key">
+
+        <ng-container [ngSwitch]="item.key">
+
+          <ng-container *ngSwitchCase="'user_id'">
+            <ng-container *ngTemplateOutlet="userIDTemplate"></ng-container>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'created_at'">
+            <ng-container *ngTemplateOutlet="dateTemplate"></ng-container>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'telegram'">
+            <ng-container *ngTemplateOutlet="deviceTemplate"></ng-container>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'link'">
+            <ng-container *ngTemplateOutlet="downloadTemplate"></ng-container>
+          </ng-container>
+
+
+          <ng-container *ngSwitchDefault>
+            <ng-container *ngTemplateOutlet="defaultTemplate"></ng-container>
+          </ng-container>
+
+        </ng-container>
+
+
+        <ng-template #defaultTemplate>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mat-sort-header]="item.key">{{ item.value }}</th>
+          <td mat-cell *matCellDef="let element">{{ element?.[item.key] }}</td>
+        </ng-template>
+
+        <ng-template #userIDTemplate>
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="checkbox-header">
+              <mat-checkbox
+                [checked]="isAllSelected"
+                [indeterminate]="isIndeterminate"
+                (change)="toggleSelectAll()"
+              />
+              <div mat-sort-header [mat-sort-header]="item.key">{{ item.value }}</div>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-checkbox
+              [checked]="isItemSelected(element.user_id)"
+              (change)="toggleItemSelection(element.user_id)"
+            />
+            {{ element?.[item.key] }}
+          </td>
+        </ng-template>
+
+        <ng-template #dateTemplate>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mat-sort-header]="item.key">{{ item.value }}</th>
+          <td mat-cell *matCellDef="let element">{{ element?.[item.key] | date:'HH:mm dd.MM.yyyy' }}</td>
+        </ng-template>
+
+        <ng-template #deviceTemplate>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mat-sort-header]="item.key">{{ item.value }}</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="device-icons">
+              <img src="assets/icons/telegram.svg" alt="Telegram">
+              <img src="assets/icons/apple.svg" alt="Apple">
+            </div>
+          </td>
+        </ng-template>
+
+        <ng-template #downloadTemplate>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mat-sort-header]="item.key">{{ item.value }}</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="download-icons">
+              <img src="assets/icons/download.svg" alt="Download">
+            </div>
+          </td>
+        </ng-template>
+
+
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="false"
+                 (page)="onPage($event)"
+                 [length]="length"
+                 [pageSize]="pageSize"
+  ></mat-paginator>
+</div>
+

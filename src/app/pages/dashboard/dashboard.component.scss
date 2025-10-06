@@ -1,5 +1,8 @@
 .dashboard-content {
-  padding: 30px 40px;
+  padding: 30px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 @media (max-width: 430px) {

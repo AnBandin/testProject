@@ -1,10 +1,37 @@
 @use 'font.scss' as *;
 @use 'var.scss' as *;
 
+
 body {
   font-family: "Manrope", sans-serif;
   font-weight: 400;
   margin: 0;
+
+  --mdc-checkbox-disabled-selected-icon-color: rgba(0, 0, 0, .38);
+  --mdc-checkbox-disabled-unselected-icon-color: rgba(0, 0, 0, .38);
+  --mdc-checkbox-selected-checkmark-color: #000;
+  --mdc-checkbox-selected-focus-icon-color: #c1de00;
+  --mdc-checkbox-selected-hover-icon-color: #c1de00;
+  --mdc-checkbox-selected-icon-color: #c1de00;
+  --mdc-checkbox-selected-pressed-icon-color: #c1de00;
+  --mdc-checkbox-unselected-focus-icon-color: #212121;
+  --mdc-checkbox-unselected-hover-icon-color: #212121;
+  --mdc-checkbox-unselected-icon-color: rgba(0, 0, 0, .54);
+  --mdc-checkbox-unselected-pressed-icon-color: rgba(0, 0, 0, .54);
+  --mdc-checkbox-state-layer-size: 40px;
+  --mat-paginator-enabled-icon-color: #1F1F1F;
+  --mat-select-panel-background-color: white;
+  --mat-option-selected-state-layer-color: rgba(0, 0, 0, .04);
+  --mat-option-label-text-size: 14px;
+  --mat-option-hover-state-layer-color: rgba(211, 210, 210, 0.5);
+}
+
+.mat-mdc-checkbox .mdc-form-field {
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, .87))
+}
+
+.mat-mdc-checkbox.mat-mdc-checkbox-disabled label {
+  color: #00000061
 }
 
 .page {
@@ -13,134 +40,192 @@ body {
   box-sizing: border-box;
 }
 
-.btn {
-  display: inline-block;
-  padding: .375rem 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  outline: none!important
+
+
+
+
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  font-size: 12px !important;
+  line-height: 150% !important;
+  font-weight: 500 !important
 }
 
-.btn:focus,.btn:hover {
-  text-decoration: none
+.mat-mdc-tooltip {
+  --mdc-plain-tooltip-container-color: #616161;
+  --mdc-plain-tooltip-supporting-text-color: #fff
 }
 
-.btn.focus {
-  text-decoration: none
+
+.mdc-notched-outline__leading, .mdc-notched-outline__trailing {
+  border: none !important
 }
 
-.btn.active,.btn:active {
-  background-image: none;
-  outline: 0
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%
 }
 
-.btn.disabled,.btn:disabled {
-  cursor: not-allowed
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024, 0 3px 14px 2px #0000001f
 }
 
-a.btn.disabled,fieldset[disabled] a.btn {
-  pointer-events: none
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: 0 4px 20px #0000001c !important
 }
 
-.btn-primary {
-  color: #fff!important;
-  background-color: #1f1f1f!important;
-  border: none!important
+.mat-mdc-paginator {
+  color: #0000008a !important;
+  font-size: 12px !important;
+  font-weight: 500 !important
 }
 
-.btn-primary:disabled {
-  color: #909090!important;
-  background-color: #f5f5f5!important;
-  border: none!important
+.mat-mdc-paginator-page-size-select {
+  width: 56px !important
 }
 
-.btn-primary:disabled>img {
-  filter: invert(60%) sepia(13%) saturate(0%) hue-rotate(283deg) brightness(92%) contrast(89%)
+.mat-mdc-form-field-infix:has(.mat-mdc-select) {
+  min-height: unset !important;
+  min-width: unset !important
 }
 
-.btn-primary:hover {
-  color: #fff!important;
-  background: #515151!important;
-  border: none!important
+.mat-mdc-form-field-infix:has(.mat-mdc-select) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important
 }
 
-.btn-primary.focus,.btn-primary:focus {
-  color: #fff!important;
-  background: #1F1F1F!important;
-  border: none!important
+.cdk-high-contrast-active .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: .6
 }
 
-.btn-primary.active,.btn-primary:active,.open>.btn-primary.dropdown-toggle {
-  color: #0d0d0d!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important;
-  border: none!important
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, .32)
 }
 
-.btn-primary.active,.btn-primary:active,.open>.btn-primary.dropdown-toggle>img {
-  filter: none
+.cdk-overlay-transparent-backdrop {
+  transition: visibility 1ms linear, opacity 1ms linear;
+  visibility: hidden;
+  opacity: 1
 }
 
-.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.btn-primary.dropdown-toggle.focus,.open>.btn-primary.dropdown-toggle:focus,.open>.btn-primary.dropdown-toggle:hover {
-  color: #0d0d0d!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important;
-  border: none!important
+.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+  visibility: visible
 }
 
-.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.btn-primary.dropdown-toggle.focus,.open>.btn-primary.dropdown-toggle:focus,.open>.btn-primary.dropdown-toggle:hover>img {
-  filter: none
+.cdk-overlay-backdrop-noop-animation {
+  transition: none
 }
 
-.btn-primary.disabled.focus,.btn-primary.disabled:focus,.btn-primary:disabled.focus,.btn-primary:disabled:focus {
-  color: #909090!important;
-  background-color: #f5f5f5!important;
-  border: none!important
+.cdk-overlay-container, .cdk-global-overlay-wrapper {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%
 }
 
-.btn-primary.disabled:hover,.btn-primary:disabled:hover {
-  color: #909090!important;
-  background-color: #f5f5f5!important;
-  border: none!important
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000
 }
 
-.btn-secondary {
-  color: #1f1f1f!important;
-  border: none!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+.cdk-overlay-container:empty {
+  display: none
 }
 
-.btn-secondary:hover {
-  color: #1f1f1f!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000
 }
 
-.btn-secondary.focus,.btn-secondary:focus {
-  color: #1f1f1f!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+
+.cdk-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+  opacity: 0
 }
 
-.btn-secondary.active,.btn-secondary:active,.open>.btn-secondary.dropdown-toggle {
-  color: #1f1f1f!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 1
 }
 
-.btn-secondary.active.focus,.btn-secondary.active:focus,.btn-secondary.active:hover,.btn-secondary:active.focus,.btn-secondary:active:focus,.btn-secondary:active:hover,.open>.btn-secondary.dropdown-toggle.focus,.open>.btn-secondary.dropdown-toggle:focus,.open>.btn-secondary.dropdown-toggle:hover {
-  color: #1f1f1f!important;
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+@media screen and (-ms-high-contrast: active) {
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    opacity: .6
+  }
 }
 
-btn.btn-secondary.disabled.focus,.btn.btn-secondary.disabled:focus,.btn.btn-secondary:disabled.focus,.btn.btn-secondary:disabled:focus {
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, .288)
 }
 
-.btn.btn-secondary.disabled:hover,.btn.btn-secondary:disabled:hover {
-  background: linear-gradient(122.73deg,#ECFF75 3.11%,#C1DE00 68.37%)!important
+.cdk-overlay-transparent-backdrop, .cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 1px;
+  min-height: 1px
+}
+
+.mdc-notched-outline {
+  border-bottom: 1px solid rgba(0, 0, 0, .38) !important
+}
+
+
+.mat-mdc-header-row, .table-header-row {
+  height: 44px !important;
+  color: #999 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 110% !important
+}
+
+.mdc-data-table__header-cell, .table-header-cell {
+  padding: 0 10px !important;
+  border-bottom: 1px solid #E5E5E5 !important
+}
+
+.mat-mdc-row, .mat-mdc-footer-row, .table-row {
+  height: 52px !important;
+  color: #1f1f1f !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 110% !important
+}
+
+.mat-mdc-row:hover, .mat-mdc-footer-row:hover, .table-row:hover {
+  background: #F2F2F2 !important
+}
+
+.mdc-data-table__cell, .table-cell {
+  padding: 12px 10px !important;
+  border-bottom: 1px solid #E5E5E5 !important
+}
+
+.table-header-row, .table-row {
+  -webkit-font-smoothing: antialiased
+}
+
+.mat-mdc-icon-button[disabled][disabled] {
+  --mdc-icon-button-icon-color: rgba(0, 0, 0, .38);
+  --mdc-icon-button-disabled-icon-color: rgba(0, 0, 0, .38)
 }
