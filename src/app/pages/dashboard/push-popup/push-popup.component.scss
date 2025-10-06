@@ -130,6 +130,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 19px;
+    overflow: hidden;
   }
 
   &__add-button {
@@ -180,7 +181,7 @@
   &__message {
     font-size: 13px;
     line-height: 1.4;
-    color: #666;
+    color: #1F1F1F;
     white-space: pre-wrap;
     word-wrap: break-word;
     max-height: 60px;
@@ -213,6 +214,10 @@
     gap: 10px;
     padding-top: 20px;
     align-items: center;
+
+    &__mobile {
+      display: none;
+    }
   }
 }
 
@@ -236,27 +241,29 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   .push-popup {
-    &__container {
-      width: 95vw;
-      height: 90vh;
-      margin: 20px;
+
+    &__preview-text {
+      gap: 0;
+      margin-bottom: 0;
     }
 
-    &__preview {
-      max-width: 100%;
+    &__footer {
+      display: none;
+
+      &__mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px 0 0 0;
+        margin-top: auto;
+        width: 100%;
+        position: relative;
+        top: 200px;
+      }
     }
   }
 }
 
-@media (max-width: 655px) {
-  .push-popup {
-    &__container {
-      width: 100vw;
-      height: 100vh;
-      margin: 0;
-      border-radius: 0;
-    }
-  }
-}
+
