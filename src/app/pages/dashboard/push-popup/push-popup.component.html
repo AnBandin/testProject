@@ -1,0 +1,85 @@
+<p-button
+  class="push-popup__trigger"
+  severity="secondary"
+  width="172px"
+  height="46px"
+  borderRadius="5px"
+  (click)="openModal()"
+>
+  <div class="push-popup__trigger-content">
+    <span class="push-popup__trigger-text">Отправить Push</span>
+    <img src="assets/icons/stroke.svg" alt="Send" class="push-popup__trigger-icon">
+  </div>
+</p-button>
+
+<div
+  class="push-popup__overlay"
+  *ngIf="isModalOpen()"
+>
+  <div class="push-popup__container" (click)="$event.stopPropagation()">
+    <div class="push-popup__content">
+      <div class="push-popup__header">
+        <h2 class="push-popup__title">Новая Push рассылка</h2>
+        <button class="push-popup__close" (click)="closeModal()">
+          <img src="assets/icons/delete.svg" width="24" height="24" alt="Close" class="push-popup__close-icon">
+        </button>
+      </div>
+
+      <div class="push-popup__body">
+        <div class="push-popup__section">
+          <label for="messageText" class="push-popup__label">Текст сообщения</label>
+          <div class="push-popup__textarea-wrapper">
+            <textarea
+              id="messageText"
+              name="messageText"
+              class="push-popup__textarea"
+              placeholder="⬛ Осталось чуть-чуть до 1500 Р – и бонусы ваши. Успейте до конца акции!"
+              [(ngModel)]="messageText"
+            ></textarea>
+            <p-button
+              class="push-popup__add-button"
+              severity="secondary"
+              width="30px"
+              height="30px"
+              borderRadius="8px"
+            >
+              <img src="assets/icons/plus.svg" width="12" height="12" alt="Add" class="push-popup__add-icon">
+            </p-button>
+          </div>
+        </div>
+
+        <div class="push-popup__section">
+          <label class="push-popup__label">Превью</label>
+          <div class="push-popup__preview">
+            <div class="push-popup__preview-content">
+              <img src="assets/icons/notify.png" width="38" height="38" alt="Wallet" class="push-popup__preview-icon">
+              <div class="push-popup__preview-text">
+                <div class="push-popup__sender">{{ senderName }}</div>
+                <div class="push-popup__message">{{ messageText || '🛒 Осталось чуть-чуть до 1500 ₽ — и бонусы ваши. Успейте до конца акции!' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="push-popup__section">
+          <label for="sendDate" class="push-popup__label">Дата отправки рассылки</label>
+          <select
+            id="sendDate"
+            name="sendDate"
+            class="push-popup__select"
+            [(ngModel)]="sendDate"
+          >
+            <option value="Сейчас">Сейчас</option>
+            <option value="Завтра">Завтра</option>
+            <option value="Через неделю">Через неделю</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="push-popup__footer">
+        <p-button severity="secondary" size="large" width="83px" height="43px" (onClick)="cancelSend()">Отмена</p-button>
+        <p-button severity="primary" size="large" width="106px" height="46px" (onClick)="sendPush()">Отправить</p-button>
+      </div>
+    </div>
+  </div>
+</div>

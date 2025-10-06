@@ -1,7 +1,6 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, inject, OnInit, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ClientService} from "../../../services/client.service";
-import {ButtonComponent} from "@ux/button/button.component";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorIntl, MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {MyCustomPaginatorIntl} from "../../../localization/table.material.service";
@@ -18,13 +17,13 @@ import {User} from "../../../models/client.model";
 import {debounceTime, distinctUntilChanged, Subject} from "rxjs";
 import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatCheckbox} from "@angular/material/checkbox";
+import {PushPopupComponent} from "../push-popup/push-popup.component";
 
 @Component({
   selector: 'table-content-panel',
   standalone: true,
   imports: [
     FormsModule,
-    ButtonComponent,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -35,7 +34,8 @@ import {MatCheckbox} from "@angular/material/checkbox";
     NgSwitchDefault,
     NgTemplateOutlet,
     MatCheckbox,
-    DatePipe
+    DatePipe,
+    PushPopupComponent
   ],
   providers: [{provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl}],
   changeDetection: ChangeDetectionStrategy.OnPush,
