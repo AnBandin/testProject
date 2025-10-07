@@ -8,5 +8,6 @@ export const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {path: 'auth', component: AuthPageComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: '**', component: NotFoundPageComponent},
+  {path: '404', component: NotFoundPageComponent},
+  {path: '**', redirectTo: '404', pathMatch: 'full'},
 ];
