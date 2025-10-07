@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators} f
 import { ClientService } from '../../../services/client.service';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import {phoneValidator} from "@utils";
-import {FullName, FullNameInputComponent} from "../../../components/full-name-input/full-name-input.component";
+import {FullName, FullNameInputComponent} from "@ux/full-name-input/full-name-input.component";
 
 @Component({
   selector: 'new-client-popup',
