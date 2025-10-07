@@ -1,0 +1,184 @@
+<p-button
+  class="new-client-popup__trigger"
+  severity="secondary"
+  width="172px"
+  height="46px"
+  borderRadius="5px"
+  (click)="openModal()"
+>
+  <div class="new-client-popup__trigger-content">
+    <span class="new-client-popup__trigger-text">Добавить клиента</span>
+    <img src="assets/icons/plus.svg" alt="Add" class="new-client-popup__trigger-icon">
+  </div>
+</p-button>
+
+<div
+  class="new-client-popup__overlay"
+  *ngIf="isModalOpen()"
+>
+  <div class="new-client-popup__container" (click)="$event.stopPropagation()">
+    <div class="new-client-popup__content" [formGroup]="clientForm">
+      <div class="new-client-popup__header">
+        <h2 class="new-client-popup__title">Новый клиент</h2>
+        <button class="new-client-popup__close" (click)="closeModal()">
+          <img src="assets/icons/delete.svg" width="24" height="24" alt="Close" class="new-client-popup__close-icon">
+        </button>
+      </div>
+
+      <div class="new-client-popup__body">
+        <div class="new-client-popup__form-scroll">
+
+          <div class="new-client-popup__field">
+            <label for="fullName" class="new-client-popup__label">ФИО *</label>
+            <full-name-input formControlName="fullName"/>
+            <div
+              *ngIf="clientForm.get('fullName')?.invalid && clientForm.get('fullName')?.touched"
+              class="new-client-popup__error">
+              ФИО обязательно для заполнения
+            </div>
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="template" class="new-client-popup__label">Макет</label>
+            <input
+              id="template"
+              name="template"
+              type="text"
+              class="new-client-popup__input"
+              formControlName="template"
+            >
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="phone" class="new-client-popup__label">Телефон *</label>
+            <input
+              id="phone"
+              name="phone"
+              type="number"
+              class="new-client-popup__input"
+              placeholder="79876543211"
+              formControlName="phone"
+              [ngClass]="{'new-client-popup__input--error': clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched}"
+            >
+            <div
+              *ngIf="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched"
+              class="new-client-popup__error">
+              Телефон обязателен для заполнения
+            </div>
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="email" class="new-client-popup__label">Email *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="new-client-popup__input"
+              placeholder="support@teyca.ru"
+              formControlName="email"
+              [ngClass]="{'new-client-popup__input--error': clientForm.get('email')?.invalid && clientForm.get('email')?.touched}"
+            >
+            <div
+              *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched"
+              class="new-client-popup__error">
+              <span *ngIf="clientForm.get('email')?.errors?.['required']">Email обязателен для заполнения</span>
+              <span *ngIf="clientForm.get('email')?.errors?.['email']">Введите корректный email</span>
+            </div>
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="birthday" class="new-client-popup__label">Дата рождения</label>
+            <input
+              id="birthday"
+              name="birthday"
+              type="date"
+              class="new-client-popup__input"
+              placeholder="01.03.1990"
+              formControlName="birthday"
+            >
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="gender" class="new-client-popup__label">Пол</label>
+            <select
+              id="gender"
+              name="gender"
+              class="new-client-popup__select"
+              formControlName="gender"
+            >
+              <option value="">Выберите пол</option>
+              <option value="м">Мужской</option>
+              <option value="ж">Женский</option>
+            </select>
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="barcode" class="new-client-popup__label">Штрих-код</label>
+            <input
+              id="barcode"
+              name="barcode"
+              type="text"
+              class="new-client-popup__input"
+              placeholder="0000001"
+              formControlName="barcode"
+            >
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="loyaltyLevel" class="new-client-popup__label">Уровень лояльности</label>
+            <select
+              id="loyaltyLevel"
+              name="loyaltyLevel"
+              class="new-client-popup__select"
+              formControlName="loyaltyLevel"
+            >
+              <option value="">Выберите уровень</option>
+              <option value="Бронзовый">Бронзовый</option>
+              <option value="Серебряный">Серебряный</option>
+              <option value="Золотой">Золотой</option>
+              <option value="Платиновый">Платиновый</option>
+            </select>
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="discount" class="new-client-popup__label">Скидка</label>
+            <input
+              id="discount"
+              name="discount"
+              type="number"
+              class="new-client-popup__input"
+              placeholder="10%"
+              formControlName="discount"
+            >
+          </div>
+
+          <div class="new-client-popup__field">
+            <label for="bonus" class="new-client-popup__label">Бонусы</label>
+            <input
+              id="bonus"
+              name="bonus"
+              type="number"
+              class="new-client-popup__input"
+              placeholder="200"
+              formControlName="bonus"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="new-client-popup__footer">
+        <p-button severity="secondary" size="large" width="83px" height="43px" (onClick)="cancelAdd()">Отмена</p-button>
+        <p-button [disabled]="!isFormValid()"
+                  severity="primary" size="large" width="106px" height="46px"
+                  (onClick)="addClient()">Добавить
+        </p-button>
+      </div>
+
+      <div class="new-client-popup__footer__mobile">
+        <p-button severity="secondary" size="fullscreen" (onClick)="cancelAdd()">Отмена</p-button>
+        <p-button [disabled]="!isFormValid()" severity="primary" size="fullscreen" (onClick)="addClient()">Добавить
+        </p-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Client, PushData} from "../models/client.model";
+import {Client, CreateCard, PushData} from "../models/client.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,16 @@ export class ClientService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    
-    return this.http.post<any>(`${this.API_URL}/message/push`, data, { headers });
+
+    return this.http.post<PushData>(`${this.API_URL}/message/push`, data, { headers });
+  }
+
+  addClient(data: CreateCard): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post<CreateCard>(`${this.API_URL}/passes`, data, { headers });
   }
 
 

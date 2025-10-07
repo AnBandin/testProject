@@ -19,6 +19,7 @@ import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {PushPopupComponent} from "../push-popup/push-popup.component";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {NewClientPopupComponent} from "../new-client-popup/new-client-popup.component";
 
 @Component({
   selector: 'table-content-panel',
@@ -36,7 +37,8 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
     NgTemplateOutlet,
     MatCheckbox,
     DatePipe,
-    PushPopupComponent
+    PushPopupComponent,
+    NewClientPopupComponent
   ],
   providers: [{provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl}],
   changeDetection: ChangeDetectionStrategy.OnPush,
