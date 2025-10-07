@@ -26,7 +26,6 @@ describe('NewClientPopupComponent', () => {
   });
 
   it('should close modal when closeModal is called and reset form values', () => {
-    // arrange: set some values
     component.clientForm.get('fullName')?.setValue('Иванов Иван');
     component.clientForm.get('phone')?.setValue('79876543211');
     component.clientForm.get('email')?.setValue('test@test.com');
@@ -37,12 +36,9 @@ describe('NewClientPopupComponent', () => {
     component.clientForm.get('bonus')?.setValue(100);
     component.clientForm.get('loyaltyLevel')?.setValue('Бронзовый');
 
-    // act
     component.closeModal();
 
-    // assert: modal closed
     expect(component.isModalOpen()).toBe(false);
-    // assert: form reset to defaults
     expect(component.clientForm.get('template')?.value).toBe('Тестовый');
     expect(component.clientForm.get('fullName')?.value).toBe('');
     expect(component.clientForm.get('phone')?.value).toBe('');
@@ -56,10 +52,8 @@ describe('NewClientPopupComponent', () => {
   });
 
   it('should validate form correctly via isFormValid()', () => {
-    // initially invalid
     expect(component.isFormValid()).toBe(false);
 
-    // provide minimal valid values
     component.clientForm.get('fullName')?.setValue('Иванов Иван');
     component.clientForm.get('phone')?.setValue('79876543211');
     component.clientForm.get('email')?.setValue('valid@mail.com');
