@@ -33,7 +33,6 @@ export class PushPopupComponent {
 
   messageText: string = '';
   sendDate: string = 'Сейчас';
-  senderName: string = 'Имя отправителя';
 
   openModal() {
     this.isModalOpen.set(true);

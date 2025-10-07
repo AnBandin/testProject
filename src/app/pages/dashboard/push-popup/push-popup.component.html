@@ -54,7 +54,7 @@
             <div class="push-popup__preview-content">
               <img src="assets/icons/notify.png" width="38" height="38" alt="Wallet" class="push-popup__preview-icon">
               <div class="push-popup__preview-text">
-                <div class="push-popup__sender">{{ senderName }}</div>
+                <div class="push-popup__sender">Имя отправителя</div>
                 <div class="push-popup__message">{{ messageText || '🛒 Осталось чуть-чуть до 1500 ₽ — и бонусы ваши. Успейте до конца акции!' }}</div>
               </div>
             </div>
@@ -78,12 +78,12 @@
 
       <div class="push-popup__footer">
         <p-button severity="secondary" size="large" width="83px" height="43px" (onClick)="cancelSend()">Отмена</p-button>
-        <p-button [disabled]="!selectedItems.length" severity="primary" size="large" width="106px" height="46px" (onClick)="sendPush()">Отправить</p-button>
+        <p-button [disabled]="!selectedItems.length || !messageText" severity="primary" size="large" width="106px" height="46px" (onClick)="sendPush()">Отправить</p-button>
       </div>
 
       <div class="push-popup__footer__mobile">
         <p-button severity="secondary" size="fullscreen" (onClick)="cancelSend()">Отмена</p-button>
-        <p-button [disabled]="!selectedItems.length" severity="primary" size="fullscreen" (onClick)="sendPush()">Отправить</p-button>
+        <p-button [disabled]="!selectedItems.length || !messageText" severity="primary" size="fullscreen" (onClick)="sendPush()">Отправить</p-button>
       </div>
     </div>
   </div>

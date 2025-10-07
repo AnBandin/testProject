@@ -41,9 +41,6 @@ body {
 }
 
 
-
-
-
 .mat-mdc-tooltip .mdc-tooltip__surface {
   font-size: 12px !important;
   line-height: 150% !important;
@@ -54,7 +51,6 @@ body {
   --mdc-plain-tooltip-container-color: #616161;
   --mdc-plain-tooltip-supporting-text-color: #fff
 }
-
 
 .mdc-notched-outline__leading, .mdc-notched-outline__trailing {
   border: none !important
@@ -68,10 +64,6 @@ body {
   display: flex;
   max-width: 100%;
   max-height: 100%
-}
-
-.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8 {
-  box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024, 0 3px 14px 2px #0000001f
 }
 
 .mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8 {
@@ -90,10 +82,7 @@ body {
 
 .mat-mdc-form-field-infix:has(.mat-mdc-select) {
   min-height: unset !important;
-  min-width: unset !important
-}
-
-.mat-mdc-form-field-infix:has(.mat-mdc-select) {
+  min-width: unset !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   border-bottom: none !important
@@ -101,10 +90,6 @@ body {
 
 .cdk-high-contrast-active .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
   opacity: .6
-}
-
-.cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, .32)
 }
 
 .cdk-overlay-transparent-backdrop {
@@ -144,7 +129,6 @@ body {
   position: absolute;
   z-index: 1000
 }
-
 
 .cdk-overlay-backdrop {
   position: absolute;
@@ -189,7 +173,6 @@ body {
 .mdc-notched-outline {
   border-bottom: 1px solid rgba(0, 0, 0, .38) !important
 }
-
 
 .mat-mdc-header-row, .table-header-row {
   height: 44px !important;
