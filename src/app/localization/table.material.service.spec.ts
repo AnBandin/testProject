@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { MyCustomPaginatorIntl } from './table.material.service';
 
-import { TableMaterialService } from './table.material.service';
-
-describe('TableMaterialService', () => {
-  let service: TableMaterialService;
+describe('MyCustomPaginatorIntl', () => {
+  let service: MyCustomPaginatorIntl;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(TableMaterialService);
+    TestBed.configureTestingModule({
+      providers: [MyCustomPaginatorIntl]
+    });
+    service = TestBed.inject(MyCustomPaginatorIntl);
   });
 
   it('should be created', () => {

@@ -3,6 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthPanelComponent } from './auth-panel.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterTestingModule} from "@angular/router/testing";
+import {AuthPageComponent} from "../auth-page.component";
 
 describe('AuthPageComponent', () => {
   let component: AuthPanelComponent;
@@ -11,7 +14,10 @@ describe('AuthPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
+        AuthPageComponent,
         AuthPanelComponent,
+        HttpClientTestingModule,
+        RouterTestingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule
       ]
